@@ -10,4 +10,4 @@ Test Status:
 Branches
 
     master: Partially passed. Java. Netbean Projects. The DMOJ shows the testcase is not valid for Java. I believe I have had the 
-    best performance. Timeout is simply a Java VM performance issue.
+    best performance using dynamic planning. There should be a mathematic general fomular for the f(n). Leave it for later maths class.
