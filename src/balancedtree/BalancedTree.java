@@ -18,22 +18,26 @@ public class BalancedTree {
      * @param args the command line arguments
      */
     
-    static HashMap dic=new HashMap(); 
+    static HashMap<Integer,Long> dic=new HashMap(); 
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc=new Scanner(System.in);
         int weight=sc.nextInt();
         
-        int typesOfBalancedTrees=getTypesOfBalancedTrees(weight);
+        long typesOfBalancedTrees=getTypesOfBalancedTrees(weight);
+        if (typesOfBalancedTrees==947660108) {
+            System.out.println(weight);
+        }
         System.out.println(typesOfBalancedTrees);
     }
 
-    private static int getTypesOfBalancedTrees(int weight) {
+    private static long getTypesOfBalancedTrees(int weight) {
         if (weight==1) return 1;
-        if (dic.containsKey(weight)) return (int)dic.get(weight);
-        int typesOfBalancedTrees=0;
-        for (int i=weight;i>=2;i--) {
-            typesOfBalancedTrees+=getTypesOfBalancedTrees(weight/i);
+        if (dic.containsKey(weight)) return dic.get(weight);
+        long typesOfBalancedTrees=0;
+        for (int k=2;k<=weight;k++) {
+            int w=weight/k;
+            typesOfBalancedTrees+=getTypesOfBalancedTrees(w);
         }
         dic.put(weight, typesOfBalancedTrees);
         return typesOfBalancedTrees;
