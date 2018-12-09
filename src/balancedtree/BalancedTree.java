@@ -35,10 +35,15 @@ public class BalancedTree {
         if (weight==1) return 1;
         if (dic.containsKey(weight)) return dic.get(weight);
         long typesOfBalancedTrees=0;
-        for (int k=2;k<=weight;k++) {
-            int w=weight/k;
-            typesOfBalancedTrees+=getTypesOfBalancedTrees(w);
+        int sqrtWeight=(int)Math.sqrt(weight);
+        for (int j=1;j<=sqrtWeight;j++) {
+            typesOfBalancedTrees+=(weight/j-weight/(j+1))*getTypesOfBalancedTrees(j);
         }
+        
+        for (int j=2;weight/j>sqrtWeight;j++) {
+            typesOfBalancedTrees+=getTypesOfBalancedTrees(weight/j);
+        }
+        
         dic.put(weight, typesOfBalancedTrees);
         return typesOfBalancedTrees;
     }
